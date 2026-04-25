@@ -1,4 +1,4 @@
-local ScreenGui = Instance.new("ScreenGui")
+local SH = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
 local TextButton = Instance.new("TextButton")
@@ -40,11 +40,12 @@ local UICorner_19 = Instance.new("UICorner")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.ResetOnSpawn = false
+SH.Name = "SH"
+SH.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+SH.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+SH.ResetOnSpawn = false
 
-Frame.Parent = ScreenGui
+Frame.Parent = SH
 Frame.BackgroundColor3 = Color3.fromRGB(47, 10, 90)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
@@ -321,15 +322,15 @@ UICorner_19.Parent = Frame
 
 -- Scripts:
 
-local function LOMAMM_fake_script() -- TextButton.LocalScript 
+local function FKFCVE_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		script.Parent.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(LOMAMM_fake_script)()
-local function YOYAL_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(FKFCVE_fake_script)()
+local function VEKJZIJ_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local on = false
@@ -376,8 +377,8 @@ local function YOYAL_fake_script() -- TextButton_2.LocalScript
 	end
 	end)
 end
-coroutine.wrap(YOYAL_fake_script)()
-local function UHOR_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(VEKJZIJ_fake_script)()
+local function EABG_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	local on = false
@@ -394,16 +395,16 @@ local function UHOR_fake_script() -- TextButton_3.LocalScript
 		end
 	end)
 end
-coroutine.wrap(UHOR_fake_script)()
-local function HJEULZ_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(EABG_fake_script)()
+local function JOUCD_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.RatModel:Destroy()
 	end)
 end
-coroutine.wrap(HJEULZ_fake_script)()
-local function CPHMVI_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(JOUCD_fake_script)()
+local function LOZBH_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	local on = false
@@ -465,8 +466,8 @@ local function CPHMVI_fake_script() -- TextButton_5.LocalScript
 		end
 	end)
 end
-coroutine.wrap(CPHMVI_fake_script)()
-local function MOOHKM_fake_script() -- TextButton_6.LocalScript 
+coroutine.wrap(LOZBH_fake_script)()
+local function LFJTNTE_fake_script() -- TextButton_6.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_6)
 
 	local on = false
@@ -488,47 +489,74 @@ local function MOOHKM_fake_script() -- TextButton_6.LocalScript
 		end
 	end)
 end
-coroutine.wrap(MOOHKM_fake_script)()
-local function ZFVIM_fake_script() -- TextButton_7.LocalScript 
+coroutine.wrap(LFJTNTE_fake_script)()
+local function QCUO_fake_script() -- TextButton_7.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_7)
 
 	local on = false
 	script.Parent.MouseButton1Up:Connect(function()
 		on = not on
 		if on == true then
-			local c = workspace:WaitForChild("UncollectedCharacters")
-			local h = Instance.new("Highlight")
+			local folder = workspace:WaitForChild("UncollectedCharacters")
 	
-			h.Name = "highlight"
-			h.Parent = workspace
-			h.FillTransparency = 1
-			h.OutlineColor = Color3.new(0, 1, 0)
-			h.OutlineTransparency = 0
-			h.Adornee = c
+			local function applyHighlight(model)
+				-- Remove existing highlights
+				for _, obj in ipairs(model:GetDescendants()) do
+					if obj:IsA("Highlight") then
+						obj:Destroy()
+					end
+				end
+	
+				-- Create new highlight
+				local highlight = Instance.new("Highlight")
+				highlight.Name = "highlight"
+				highlight.FillTransparency = 1 -- no fill (outline only)
+				highlight.OutlineColor = Color3.fromRGB(0, 170, 255) -- blue
+				highlight.OutlineTransparency = 0
+				highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	
+				highlight.Adornee = model
+				highlight.Parent = model
+			end
+	
+			-- Apply to all current models
+			for _, obj in ipairs(folder:GetChildren()) do
+				if obj:IsA("Model") then
+					applyHighlight(obj)
+				end
+			end
+	
+			-- Optional: auto-apply to new models added later
+			folder.ChildAdded:Connect(function(obj)
+				if obj:IsA("Model") then
+					task.wait(0.1) -- small delay to ensure it's fully loaded
+					applyHighlight(obj)
+				end
+			end)
 		else
 			local c = workspace:WaitForChild("UncollectedCharacters")
 			c:FindFirstChild("highlight"):Destroy()
 		end
 	end)
 end
-coroutine.wrap(ZFVIM_fake_script)()
-local function UKRU_fake_script() -- TextButton_8.LocalScript 
+coroutine.wrap(QCUO_fake_script)()
+local function BWUOE_fake_script() -- TextButton_8.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_8)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		game.Players.LocalPlayer:Kick("You have been kicked by GUI.")
 	end)
 end
-coroutine.wrap(UKRU_fake_script)()
-local function IYHDULG_fake_script() -- TextButton_9.LocalScript 
+coroutine.wrap(BWUOE_fake_script)()
+local function JSCTKK_fake_script() -- TextButton_9.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_9)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/4WRwYLp2"))()
 	end)
 end
-coroutine.wrap(IYHDULG_fake_script)()
-local function KCJSCF_fake_script() -- TextButton_10.LocalScript 
+coroutine.wrap(JSCTKK_fake_script)()
+local function SVKFXSR_fake_script() -- TextButton_10.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_10)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -563,8 +591,8 @@ local function KCJSCF_fake_script() -- TextButton_10.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(KCJSCF_fake_script)()
-local function JQBQT_fake_script() -- TextButton_11.LocalScript 
+coroutine.wrap(SVKFXSR_fake_script)()
+local function INPUUNZ_fake_script() -- TextButton_11.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_11)
 
 	local on = false
@@ -653,24 +681,24 @@ local function JQBQT_fake_script() -- TextButton_11.LocalScript
 		end
 	end)
 end
-coroutine.wrap(JQBQT_fake_script)()
-local function QTBTU_fake_script() -- TextButton_12.LocalScript 
+coroutine.wrap(INPUUNZ_fake_script)()
+local function SGIMFJI_fake_script() -- TextButton_12.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_12)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.KitchenRoom.SkatingRink:Destroy()
 	end)
 end
-coroutine.wrap(QTBTU_fake_script)()
-local function CTLLHIT_fake_script() -- TextButton_13.LocalScript 
+coroutine.wrap(SGIMFJI_fake_script)()
+local function MZEGNJ_fake_script() -- TextButton_13.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_13)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end)
 end
-coroutine.wrap(CTLLHIT_fake_script)()
-local function TTQR_fake_script() -- TextButton_14.LocalScript 
+coroutine.wrap(MZEGNJ_fake_script)()
+local function HLWCI_fake_script() -- TextButton_14.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_14)
 
 	local on = false
@@ -726,8 +754,8 @@ local function TTQR_fake_script() -- TextButton_14.LocalScript
 		end
 	end)
 end
-coroutine.wrap(TTQR_fake_script)()
-local function THOWM_fake_script() -- TextButton_15.LocalScript 
+coroutine.wrap(HLWCI_fake_script)()
+local function IWXRBY_fake_script() -- TextButton_15.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_15)
 
 	local on = false
@@ -770,8 +798,8 @@ local function THOWM_fake_script() -- TextButton_15.LocalScript
 		end
 	end)
 end
-coroutine.wrap(THOWM_fake_script)()
-local function WLNP_fake_script() -- TextButton_16.LocalScript 
+coroutine.wrap(IWXRBY_fake_script)()
+local function KAWN_fake_script() -- TextButton_16.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_16)
 
 	local on = false
@@ -831,8 +859,8 @@ local function WLNP_fake_script() -- TextButton_16.LocalScript
 		end
 	end)
 end
-coroutine.wrap(WLNP_fake_script)()
-local function NPZIVKD_fake_script() -- Frame.UIDrag 
+coroutine.wrap(KAWN_fake_script)()
+local function YANOZLO_fake_script() -- Frame.UIDrag 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Made by Real_IceyDev (@lceyDex) --
@@ -873,4 +901,4 @@ local function NPZIVKD_fake_script() -- Frame.UIDrag
 		end
 	end)
 end
-coroutine.wrap(NPZIVKD_fake_script)()
+coroutine.wrap(YANOZLO_fake_script)()
