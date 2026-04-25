@@ -152,7 +152,7 @@ UICorner_9.Parent = TextButton_7
 
 -- Scripts:
 
-local function XYNQ_fake_script() -- Frame.UIDrag 
+local function JOUFMYC_fake_script() -- Frame.UIDrag 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Made by Real_IceyDev (@lceyDex) --
@@ -193,16 +193,16 @@ local function XYNQ_fake_script() -- Frame.UIDrag
 		end
 	end)
 end
-coroutine.wrap(XYNQ_fake_script)()
-local function RJRBMTE_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(JOUFMYC_fake_script)()
+local function YEHVJO_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		script.Parent.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(RJRBMTE_fake_script)()
-local function EYFHLG_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(YEHVJO_fake_script)()
+local function VLCWGZK_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -350,16 +350,16 @@ local function EYFHLG_fake_script() -- TextButton_2.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(EYFHLG_fake_script)()
-local function JLGNLWB_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(VLCWGZK_fake_script)()
+local function ADTP_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/seGbe6tn"))()
 	end)
 end
-coroutine.wrap(JLGNLWB_fake_script)()
-local function PDDL_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(ADTP_fake_script)()
+local function XJOKYHJ_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -372,8 +372,8 @@ local function PDDL_fake_script() -- TextButton_5.LocalScript
 		end
 	end)
 end
-coroutine.wrap(PDDL_fake_script)()
-local function WMLBJN_fake_script() -- TextButton_6.LocalScript 
+coroutine.wrap(XJOKYHJ_fake_script)()
+local function MECMONI_fake_script() -- TextButton_6.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_6)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -409,8 +409,8 @@ local function WMLBJN_fake_script() -- TextButton_6.LocalScript
 		end
 	end)
 end
-coroutine.wrap(WMLBJN_fake_script)()
-local function SSWJG_fake_script() -- TextButton_7.LocalScript 
+coroutine.wrap(MECMONI_fake_script)()
+local function LRZD_fake_script() -- TextButton_7.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_7)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -441,4 +441,4 @@ local function SSWJG_fake_script() -- TextButton_7.LocalScript
 		player.CharacterAdded:Connect(setupCharacter)
 	end)
 end
-coroutine.wrap(SSWJG_fake_script)()
+coroutine.wrap(LRZD_fake_script)()
