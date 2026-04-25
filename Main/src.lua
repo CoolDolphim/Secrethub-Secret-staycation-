@@ -1,3 +1,8 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
 local SH = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
@@ -161,7 +166,7 @@ TextButton_7.BorderSizePixel = 0
 TextButton_7.Position = UDim2.new(0.665265739, 0, 0.455384612, 0)
 TextButton_7.Size = UDim2.new(0, 123, 0, 43)
 TextButton_7.Font = Enum.Font.SourceSans
-TextButton_7.Text = "(VISUAL)  Food  Esp [House:Dark:etc]"
+TextButton_7.Text = "(VISUAL) Place Ladder [P]"
 TextButton_7.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_7.TextScaled = true
 TextButton_7.TextSize = 14.000
@@ -322,15 +327,57 @@ UICorner_19.Parent = Frame
 
 -- Scripts:
 
-local function UYOFKV_fake_script() -- TextButton.LocalScript 
+local function ISQWA_fake_script() -- Frame.UIDrag 
+	local script = Instance.new('LocalScript', Frame)
+
+	-- Made by Real_IceyDev (@lceyDex) --
+	-- Simple UI dragger (PC Only/Any device that has a mouse) --
+	
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+end
+coroutine.wrap(ISQWA_fake_script)()
+local function UFBNIQ_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		script.Parent.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(UYOFKV_fake_script)()
-local function MMIV_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(UFBNIQ_fake_script)()
+local function UBUVJY_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local on = false
@@ -377,8 +424,8 @@ local function MMIV_fake_script() -- TextButton_2.LocalScript
 	end
 	end)
 end
-coroutine.wrap(MMIV_fake_script)()
-local function PSTV_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(UBUVJY_fake_script)()
+local function SHVA_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	local on = false
@@ -395,16 +442,16 @@ local function PSTV_fake_script() -- TextButton_3.LocalScript
 		end
 	end)
 end
-coroutine.wrap(PSTV_fake_script)()
-local function BUITGE_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(SHVA_fake_script)()
+local function DPVUHR_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.RatModel:Destroy()
 	end)
 end
-coroutine.wrap(BUITGE_fake_script)()
-local function BUNGA_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(DPVUHR_fake_script)()
+local function DYVPF_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	local on = false
@@ -466,8 +513,8 @@ local function BUNGA_fake_script() -- TextButton_5.LocalScript
 		end
 	end)
 end
-coroutine.wrap(BUNGA_fake_script)()
-local function UXTAOX_fake_script() -- TextButton_6.LocalScript 
+coroutine.wrap(DYVPF_fake_script)()
+local function BYPBCVI_fake_script() -- TextButton_6.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_6)
 
 	local on = false
@@ -489,80 +536,65 @@ local function UXTAOX_fake_script() -- TextButton_6.LocalScript
 		end
 	end)
 end
-coroutine.wrap(UXTAOX_fake_script)()
-local function YOEOF_fake_script() -- TextButton_7.LocalScript 
+coroutine.wrap(BYPBCVI_fake_script)()
+local function VGCLMO_fake_script() -- TextButton_7.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_7)
 
-	local on = false
 	script.Parent.MouseButton1Up:Connect(function()
-		on = not on
-		if on == true then
-			local folder = workspace:WaitForChild("UncollectedCharacters")
+		local TweenService = game:GetService("TweenService")
+		local Players = game:GetService("Players")
 	
-			local function clearAllHighlights(model)
-				for _, obj in ipairs(model:GetDescendants()) do
-					if obj:IsA("Highlight") then
-						obj:Destroy()
-					end
-				end
-			end
+		local player = Players.LocalPlayer
+		local character = player.Character or player.CharacterAdded:Wait()
+		local root = character:WaitForChild("HumanoidRootPart")
 	
-			local function applyHighlight(model)
-				-- Step 1: delete ALL highlights anywhere in the model
-				clearAllHighlights(model)
+		-- Create wedge
+		local wedge = Instance.new("WedgePart")
+		wedge.Size = Vector3.new(1, 1, 1)
+		wedge.Transparency = 0.5
+		wedge.Anchored = true
+		wedge.CanCollide = false
+		wedge.Color = Color3.fromRGB(255, 255, 255)
 	
-				-- Step 2: create new highlight on the MODEL only
-				local highlight = Instance.new("Highlight")
-				highlight.Name = "highlight"
-				highlight.Adornee = model
+		-- Position it in front of the player
+		wedge.CFrame = root.CFrame * CFrame.new(0, 0, -5)
 	
-				-- outline only
-				highlight.FillTransparency = 1
-				highlight.OutlineTransparency = 0
-				highlight.OutlineColor = Color3.fromRGB(0, 170, 255)
+		wedge.Parent = workspace
 	
-				highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-				highlight.Parent = model
-			end
+		-- Tween settings
+		local tweenInfo = TweenInfo.new(
+			1, -- time
+			Enum.EasingStyle.Quad,
+			Enum.EasingDirection.Out
+		)
 	
-			local function processModel(obj)
-				if obj:IsA("Model") then
-					task.wait(0.05) -- helps if model is still loading parts
-					applyHighlight(obj)
-				end
-			end
+		-- Goal: scale up
+		local goal = {
+			Size = Vector3.new(10, 10, 10)
+		}
 	
-			-- Apply to existing models
-			for _, obj in ipairs(folder:GetChildren()) do
-				processModel(obj)
-			end
-	
-			-- Handle new models
-			folder.ChildAdded:Connect(processModel)
-		else
-			local c = workspace:WaitForChild("UncollectedCharacters")
-			c:FindFirstChild("highlight"):Destroy()
-		end
+		local tween = TweenService:Create(wedge, tweenInfo, goal)
+		tween:Play()
 	end)
 end
-coroutine.wrap(YOEOF_fake_script)()
-local function MZLXRW_fake_script() -- TextButton_8.LocalScript 
+coroutine.wrap(VGCLMO_fake_script)()
+local function NFSKD_fake_script() -- TextButton_8.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_8)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		game.Players.LocalPlayer:Kick("You have been kicked by GUI.")
 	end)
 end
-coroutine.wrap(MZLXRW_fake_script)()
-local function SCEQ_fake_script() -- TextButton_9.LocalScript 
+coroutine.wrap(NFSKD_fake_script)()
+local function EKTWXCB_fake_script() -- TextButton_9.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_9)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/4WRwYLp2"))()
 	end)
 end
-coroutine.wrap(SCEQ_fake_script)()
-local function RNMRRVF_fake_script() -- TextButton_10.LocalScript 
+coroutine.wrap(EKTWXCB_fake_script)()
+local function AMYCI_fake_script() -- TextButton_10.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_10)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -597,8 +629,8 @@ local function RNMRRVF_fake_script() -- TextButton_10.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(RNMRRVF_fake_script)()
-local function BNVEJC_fake_script() -- TextButton_11.LocalScript 
+coroutine.wrap(AMYCI_fake_script)()
+local function GBWBV_fake_script() -- TextButton_11.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_11)
 
 	local on = false
@@ -687,24 +719,24 @@ local function BNVEJC_fake_script() -- TextButton_11.LocalScript
 		end
 	end)
 end
-coroutine.wrap(BNVEJC_fake_script)()
-local function IQBMGIE_fake_script() -- TextButton_12.LocalScript 
+coroutine.wrap(GBWBV_fake_script)()
+local function JAQOXGQ_fake_script() -- TextButton_12.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_12)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.KitchenRoom.SkatingRink:Destroy()
 	end)
 end
-coroutine.wrap(IQBMGIE_fake_script)()
-local function VKOK_fake_script() -- TextButton_13.LocalScript 
+coroutine.wrap(JAQOXGQ_fake_script)()
+local function XUXGPJ_fake_script() -- TextButton_13.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_13)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end)
 end
-coroutine.wrap(VKOK_fake_script)()
-local function YTUYZ_fake_script() -- TextButton_14.LocalScript 
+coroutine.wrap(XUXGPJ_fake_script)()
+local function IQZLVPH_fake_script() -- TextButton_14.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_14)
 
 	local on = false
@@ -760,8 +792,8 @@ local function YTUYZ_fake_script() -- TextButton_14.LocalScript
 		end
 	end)
 end
-coroutine.wrap(YTUYZ_fake_script)()
-local function EHTXXTF_fake_script() -- TextButton_15.LocalScript 
+coroutine.wrap(IQZLVPH_fake_script)()
+local function PQGMBND_fake_script() -- TextButton_15.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_15)
 
 	local on = false
@@ -804,8 +836,8 @@ local function EHTXXTF_fake_script() -- TextButton_15.LocalScript
 		end
 	end)
 end
-coroutine.wrap(EHTXXTF_fake_script)()
-local function BAMJJB_fake_script() -- TextButton_16.LocalScript 
+coroutine.wrap(PQGMBND_fake_script)()
+local function EDHDZUC_fake_script() -- TextButton_16.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_16)
 
 	local on = false
@@ -865,46 +897,4 @@ local function BAMJJB_fake_script() -- TextButton_16.LocalScript
 		end
 	end)
 end
-coroutine.wrap(BAMJJB_fake_script)()
-local function YRWAFA_fake_script() -- Frame.UIDrag 
-	local script = Instance.new('LocalScript', Frame)
-
-	-- Made by Real_IceyDev (@lceyDex) --
-	-- Simple UI dragger (PC Only/Any device that has a mouse) --
-	
-	local UIS = game:GetService('UserInputService')
-	local frame = script.Parent
-	local dragToggle = nil
-	local dragSpeed = 0.25
-	local dragStart = nil
-	local startPos = nil
-	
-	local function updateInput(input)
-		local delta = input.Position - dragStart
-		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
-			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
-	end
-	
-	frame.InputBegan:Connect(function(input)
-		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-			dragToggle = true
-			dragStart = input.Position
-			startPos = frame.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragToggle = false
-				end
-			end)
-		end
-	end)
-	
-	UIS.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			if dragToggle then
-				updateInput(input)
-			end
-		end
-	end)
-end
-coroutine.wrap(YRWAFA_fake_script)()
+coroutine.wrap(EDHDZUC_fake_script)()
