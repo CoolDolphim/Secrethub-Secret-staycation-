@@ -15,3 +15,4 @@ __Things about the GUI will be listed here.__
 * [P] | permenant
 * [Place:Place:etc] | works on listed places included. And could work on all places included with the game.
 * [... Method] | uses a similar function, just a different way.
+* [SS] | server-sided
