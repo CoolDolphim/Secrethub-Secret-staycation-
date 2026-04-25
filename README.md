@@ -7,3 +7,11 @@ The project is still in-the-makes, so I am rolling out as many possible updates 
 
 ## Programming languages
 The programming languages included of SecretHub is just plain Lua.
+
+# Notes | Extra
+__Things about the GUI will be listed here.__
+
+## Bracket meanings
+* [P] | permenant
+* [Place:Place:etc] | works on listed places included. And could work on all places included with the game.
+* [... Method] | uses a similar function, just a different way.
