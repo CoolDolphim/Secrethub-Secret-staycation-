@@ -152,7 +152,7 @@ UICorner_9.Parent = TextButton_7
 
 -- Scripts:
 
-local function MYEGAX_fake_script() -- Frame.UIDrag 
+local function XYNQ_fake_script() -- Frame.UIDrag 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Made by Real_IceyDev (@lceyDex) --
@@ -193,16 +193,16 @@ local function MYEGAX_fake_script() -- Frame.UIDrag
 		end
 	end)
 end
-coroutine.wrap(MYEGAX_fake_script)()
-local function AWZUBA_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(XYNQ_fake_script)()
+local function RJRBMTE_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		script.Parent.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(AWZUBA_fake_script)()
-local function NBUGI_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(RJRBMTE_fake_script)()
+local function EYFHLG_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -350,16 +350,16 @@ local function NBUGI_fake_script() -- TextButton_2.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(NBUGI_fake_script)()
-local function KNAAS_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(EYFHLG_fake_script)()
+local function JLGNLWB_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/seGbe6tn"))()
 	end)
 end
-coroutine.wrap(KNAAS_fake_script)()
-local function EWZW_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(JLGNLWB_fake_script)()
+local function PDDL_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -372,8 +372,8 @@ local function EWZW_fake_script() -- TextButton_5.LocalScript
 		end
 	end)
 end
-coroutine.wrap(EWZW_fake_script)()
-local function BMQXWD_fake_script() -- TextButton_6.LocalScript 
+coroutine.wrap(PDDL_fake_script)()
+local function WMLBJN_fake_script() -- TextButton_6.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_6)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -385,21 +385,7 @@ local function BMQXWD_fake_script() -- TextButton_6.LocalScript
 	
 		local root = char:WaitForChild("HumanoidRootPart")
 	
-		local RunService = game:GetService("RunService")
-	
-	
-		local humanoid = char:WaitForChild("Humanoid")
-	
-	
-		local STEP_DISTANCE = 0.85
-	
-		RunService.RenderStepped:Connect(function()
-			if humanoid.MoveDirection.Magnitude > 0 then
-				root.CFrame = root.CFrame + (humanoid.MoveDirection * STEP_DISTANCE)
-			end
-		end)
-	
-		local attach = game:GetService("ReplicatedStorage").CharacterSkins.HideAndSeek.Melonpan:Clone()
+		local attach = ReplicatedStorage:WaitForChild("CharacterSkins"):WaitForChild("Dark"):WaitForChild("Defaults"):WaitForChild("Single Grain Of Rice"):Clone()
 		attach.Parent = workspace
 		attach.Name = "_SELECTED_"
 	
@@ -411,21 +397,20 @@ local function BMQXWD_fake_script() -- TextButton_6.LocalScript
 	
 		game.Players.LocalPlayer.Character.Torso.Transparency = 1
 	
-		attach.Size = Vector3.new(4.542261600494385, 3.319939374923706, 3.463883399963379)
+		attach.Size = Vector3.new(10, 10, 10)
 	
 		-- stable loop
 		while char.Parent do
 			root = char:FindFirstChild("HumanoidRootPart") or root
 			if root then
 				attach.CFrame = root.CFrame
-	
 			end
 			task.wait()
 		end
 	end)
 end
-coroutine.wrap(BMQXWD_fake_script)()
-local function XCCAET_fake_script() -- TextButton_7.LocalScript 
+coroutine.wrap(WMLBJN_fake_script)()
+local function SSWJG_fake_script() -- TextButton_7.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_7)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -456,4 +441,4 @@ local function XCCAET_fake_script() -- TextButton_7.LocalScript
 		player.CharacterAdded:Connect(setupCharacter)
 	end)
 end
-coroutine.wrap(XCCAET_fake_script)()
+coroutine.wrap(SSWJG_fake_script)()
