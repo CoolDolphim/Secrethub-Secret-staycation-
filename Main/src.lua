@@ -322,15 +322,15 @@ UICorner_19.Parent = Frame
 
 -- Scripts:
 
-local function FKFCVE_fake_script() -- TextButton.LocalScript 
+local function UYOFKV_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		script.Parent.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(FKFCVE_fake_script)()
-local function VEKJZIJ_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(UYOFKV_fake_script)()
+local function MMIV_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local on = false
@@ -377,8 +377,8 @@ local function VEKJZIJ_fake_script() -- TextButton_2.LocalScript
 	end
 	end)
 end
-coroutine.wrap(VEKJZIJ_fake_script)()
-local function EABG_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(MMIV_fake_script)()
+local function PSTV_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	local on = false
@@ -395,16 +395,16 @@ local function EABG_fake_script() -- TextButton_3.LocalScript
 		end
 	end)
 end
-coroutine.wrap(EABG_fake_script)()
-local function JOUCD_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(PSTV_fake_script)()
+local function BUITGE_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.RatModel:Destroy()
 	end)
 end
-coroutine.wrap(JOUCD_fake_script)()
-local function LOZBH_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(BUITGE_fake_script)()
+local function BUNGA_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	local on = false
@@ -466,8 +466,8 @@ local function LOZBH_fake_script() -- TextButton_5.LocalScript
 		end
 	end)
 end
-coroutine.wrap(LOZBH_fake_script)()
-local function LFJTNTE_fake_script() -- TextButton_6.LocalScript 
+coroutine.wrap(BUNGA_fake_script)()
+local function UXTAOX_fake_script() -- TextButton_6.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_6)
 
 	local on = false
@@ -489,8 +489,8 @@ local function LFJTNTE_fake_script() -- TextButton_6.LocalScript
 		end
 	end)
 end
-coroutine.wrap(LFJTNTE_fake_script)()
-local function QCUO_fake_script() -- TextButton_7.LocalScript 
+coroutine.wrap(UXTAOX_fake_script)()
+local function YOEOF_fake_script() -- TextButton_7.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_7)
 
 	local on = false
@@ -499,64 +499,70 @@ local function QCUO_fake_script() -- TextButton_7.LocalScript
 		if on == true then
 			local folder = workspace:WaitForChild("UncollectedCharacters")
 	
-			local function applyHighlight(model)
-				-- Remove existing highlights
+			local function clearAllHighlights(model)
 				for _, obj in ipairs(model:GetDescendants()) do
 					if obj:IsA("Highlight") then
 						obj:Destroy()
 					end
 				end
+			end
 	
-				-- Create new highlight
+			local function applyHighlight(model)
+				-- Step 1: delete ALL highlights anywhere in the model
+				clearAllHighlights(model)
+	
+				-- Step 2: create new highlight on the MODEL only
 				local highlight = Instance.new("Highlight")
 				highlight.Name = "highlight"
-				highlight.FillTransparency = 1 -- no fill (outline only)
-				highlight.OutlineColor = Color3.fromRGB(0, 170, 255) -- blue
-				highlight.OutlineTransparency = 0
-				highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-	
 				highlight.Adornee = model
+	
+				-- outline only
+				highlight.FillTransparency = 1
+				highlight.OutlineTransparency = 0
+				highlight.OutlineColor = Color3.fromRGB(0, 170, 255)
+	
+				highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
 				highlight.Parent = model
 			end
 	
-			-- Apply to all current models
-			for _, obj in ipairs(folder:GetChildren()) do
+			local function processModel(obj)
 				if obj:IsA("Model") then
+					task.wait(0.05) -- helps if model is still loading parts
 					applyHighlight(obj)
 				end
 			end
 	
-			-- Optional: auto-apply to new models added later
-			folder.ChildAdded:Connect(function(obj)
-				if obj:IsA("Model") then
-					task.wait(0.1) -- small delay to ensure it's fully loaded
-					applyHighlight(obj)
-				end
-			end)
+			-- Apply to existing models
+			for _, obj in ipairs(folder:GetChildren()) do
+				processModel(obj)
+			end
+	
+			-- Handle new models
+			folder.ChildAdded:Connect(processModel)
 		else
 			local c = workspace:WaitForChild("UncollectedCharacters")
 			c:FindFirstChild("highlight"):Destroy()
 		end
 	end)
 end
-coroutine.wrap(QCUO_fake_script)()
-local function BWUOE_fake_script() -- TextButton_8.LocalScript 
+coroutine.wrap(YOEOF_fake_script)()
+local function MZLXRW_fake_script() -- TextButton_8.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_8)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		game.Players.LocalPlayer:Kick("You have been kicked by GUI.")
 	end)
 end
-coroutine.wrap(BWUOE_fake_script)()
-local function JSCTKK_fake_script() -- TextButton_9.LocalScript 
+coroutine.wrap(MZLXRW_fake_script)()
+local function SCEQ_fake_script() -- TextButton_9.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_9)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/4WRwYLp2"))()
 	end)
 end
-coroutine.wrap(JSCTKK_fake_script)()
-local function SVKFXSR_fake_script() -- TextButton_10.LocalScript 
+coroutine.wrap(SCEQ_fake_script)()
+local function RNMRRVF_fake_script() -- TextButton_10.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_10)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -591,8 +597,8 @@ local function SVKFXSR_fake_script() -- TextButton_10.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(SVKFXSR_fake_script)()
-local function INPUUNZ_fake_script() -- TextButton_11.LocalScript 
+coroutine.wrap(RNMRRVF_fake_script)()
+local function BNVEJC_fake_script() -- TextButton_11.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_11)
 
 	local on = false
@@ -681,24 +687,24 @@ local function INPUUNZ_fake_script() -- TextButton_11.LocalScript
 		end
 	end)
 end
-coroutine.wrap(INPUUNZ_fake_script)()
-local function SGIMFJI_fake_script() -- TextButton_12.LocalScript 
+coroutine.wrap(BNVEJC_fake_script)()
+local function IQBMGIE_fake_script() -- TextButton_12.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_12)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.KitchenRoom.SkatingRink:Destroy()
 	end)
 end
-coroutine.wrap(SGIMFJI_fake_script)()
-local function MZEGNJ_fake_script() -- TextButton_13.LocalScript 
+coroutine.wrap(IQBMGIE_fake_script)()
+local function VKOK_fake_script() -- TextButton_13.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_13)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end)
 end
-coroutine.wrap(MZEGNJ_fake_script)()
-local function HLWCI_fake_script() -- TextButton_14.LocalScript 
+coroutine.wrap(VKOK_fake_script)()
+local function YTUYZ_fake_script() -- TextButton_14.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_14)
 
 	local on = false
@@ -754,8 +760,8 @@ local function HLWCI_fake_script() -- TextButton_14.LocalScript
 		end
 	end)
 end
-coroutine.wrap(HLWCI_fake_script)()
-local function IWXRBY_fake_script() -- TextButton_15.LocalScript 
+coroutine.wrap(YTUYZ_fake_script)()
+local function EHTXXTF_fake_script() -- TextButton_15.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_15)
 
 	local on = false
@@ -798,8 +804,8 @@ local function IWXRBY_fake_script() -- TextButton_15.LocalScript
 		end
 	end)
 end
-coroutine.wrap(IWXRBY_fake_script)()
-local function KAWN_fake_script() -- TextButton_16.LocalScript 
+coroutine.wrap(EHTXXTF_fake_script)()
+local function BAMJJB_fake_script() -- TextButton_16.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_16)
 
 	local on = false
@@ -859,8 +865,8 @@ local function KAWN_fake_script() -- TextButton_16.LocalScript
 		end
 	end)
 end
-coroutine.wrap(KAWN_fake_script)()
-local function YANOZLO_fake_script() -- Frame.UIDrag 
+coroutine.wrap(BAMJJB_fake_script)()
+local function YRWAFA_fake_script() -- Frame.UIDrag 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Made by Real_IceyDev (@lceyDex) --
@@ -901,4 +907,4 @@ local function YANOZLO_fake_script() -- Frame.UIDrag
 		end
 	end)
 end
-coroutine.wrap(YANOZLO_fake_script)()
+coroutine.wrap(YRWAFA_fake_script)()
