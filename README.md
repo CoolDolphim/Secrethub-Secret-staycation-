@@ -3,5 +3,7 @@ SecretHub is a Roblox script Project just for the Roblox game (or experience) ht
 
 ![ReadmeI.png](https://github.com/CoolDolphim/Secrethub-Secret-staycation-/blob/main/ReadmeI.png)
 
+The project is still in-the-makes, so I am rolling out as many possible updates I can add to the GUI.
+
 ## Programming languages
 The programming languages included of SecretHub is just plain Lua.
