@@ -1,28 +1,42 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
 local TextButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
 local TextButton_2 = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
 local TextButton_3 = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
 local TextButton_4 = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
 local TextButton_5 = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
 local TextButton_6 = Instance.new("TextButton")
+local UICorner_7 = Instance.new("UICorner")
 local TextButton_7 = Instance.new("TextButton")
+local UICorner_8 = Instance.new("UICorner")
 local TextButton_8 = Instance.new("TextButton")
+local UICorner_9 = Instance.new("UICorner")
 local TextButton_9 = Instance.new("TextButton")
+local UICorner_10 = Instance.new("UICorner")
 local TextButton_10 = Instance.new("TextButton")
+local UICorner_11 = Instance.new("UICorner")
 local TextButton_11 = Instance.new("TextButton")
+local UICorner_12 = Instance.new("UICorner")
 local TextButton_12 = Instance.new("TextButton")
+local UICorner_13 = Instance.new("UICorner")
 local TextButton_13 = Instance.new("TextButton")
+local UICorner_14 = Instance.new("UICorner")
 local TextButton_14 = Instance.new("TextButton")
+local UICorner_15 = Instance.new("UICorner")
 local TextButton_15 = Instance.new("TextButton")
+local UICorner_16 = Instance.new("UICorner")
 local TextButton_16 = Instance.new("TextButton")
+local UICorner_17 = Instance.new("UICorner")
 local TextButton_17 = Instance.new("TextButton")
+local UICorner_18 = Instance.new("UICorner")
+local UICorner_19 = Instance.new("UICorner")
 
 --Properties:
 
@@ -31,17 +45,17 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
 
 Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(122, 122, 122)
+Frame.BackgroundColor3 = Color3.fromRGB(47, 10, 90)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.371019095, 0, 0.392009974, 0)
-Frame.Size = UDim2.new(0, 503, 0, 325)
+Frame.Position = UDim2.new(0.485668778, 0, 0.4556804, 0)
+Frame.Size = UDim2.new(0, 447, 0, 325)
 
 TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(93, 93, 93)
+TextLabel.BackgroundColor3 = Color3.fromRGB(0, 29, 93)
 TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BorderSizePixel = 0
-TextLabel.Size = UDim2.new(0, 466, 0, 24)
+TextLabel.Size = UDim2.new(0, 447, 0, 24)
 TextLabel.Font = Enum.Font.SourceSans
 TextLabel.Text = "Secret hub"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -50,21 +64,25 @@ TextLabel.TextSize = 14.000
 TextLabel.TextWrapped = true
 
 TextButton.Parent = TextLabel
-TextButton.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.987124443, 0, 0, 0)
+TextButton.Position = UDim2.new(0.902108371, 0, 0, 0)
 TextButton.Size = UDim2.new(0, 43, 0, 24)
 TextButton.Font = Enum.Font.SourceSans
 TextButton.Text = "X"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.TextSize = 14.000
 
+UICorner.Parent = TextButton
+
+UICorner_2.Parent = TextLabel
+
 TextButton_2.Parent = Frame
-TextButton_2.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_2.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_2.BorderSizePixel = 0
-TextButton_2.Position = UDim2.new(0.0278330017, 0, 0.110769227, 0)
+TextButton_2.Position = UDim2.new(0.05691576, 0, 0.110769227, 0)
 TextButton_2.Size = UDim2.new(0, 123, 0, 43)
 TextButton_2.Font = Enum.Font.SourceSans
 TextButton_2.Text = "(COLLISION) Plrs"
@@ -73,11 +91,13 @@ TextButton_2.TextScaled = true
 TextButton_2.TextSize = 14.000
 TextButton_2.TextWrapped = true
 
+UICorner_3.Parent = TextButton_2
+
 TextButton_3.Parent = Frame
-TextButton_3.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_3.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_3.BorderSizePixel = 0
-TextButton_3.Position = UDim2.new(0.377733588, 0, 0.110769227, 0)
+TextButton_3.Position = UDim2.new(0.369042993, 0, 0.110769227, 0)
 TextButton_3.Size = UDim2.new(0, 123, 0, 43)
 TextButton_3.Font = Enum.Font.SourceSans
 TextButton_3.Text = "(COLLISION) Rat maze walls"
@@ -86,11 +106,13 @@ TextButton_3.TextScaled = true
 TextButton_3.TextSize = 14.000
 TextButton_3.TextWrapped = true
 
+UICorner_4.Parent = TextButton_3
+
 TextButton_4.Parent = Frame
-TextButton_4.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_4.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_4.BorderSizePixel = 0
-TextButton_4.Position = UDim2.new(0.719681919, 0, 0.110769227, 0)
+TextButton_4.Position = UDim2.new(0.665265739, 0, 0.110769227, 0)
 TextButton_4.Size = UDim2.new(0, 123, 0, 43)
 TextButton_4.Font = Enum.Font.SourceSans
 TextButton_4.Text = "(COLLISION) Delete rat [P]"
@@ -99,11 +121,13 @@ TextButton_4.TextScaled = true
 TextButton_4.TextSize = 14.000
 TextButton_4.TextWrapped = true
 
+UICorner_5.Parent = TextButton_4
+
 TextButton_5.Parent = Frame
-TextButton_5.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_5.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_5.BorderSizePixel = 0
-TextButton_5.Position = UDim2.new(0.0278330017, 0, 0.455384612, 0)
+TextButton_5.Position = UDim2.new(0.05691576, 0, 0.455384612, 0)
 TextButton_5.Size = UDim2.new(0, 123, 0, 43)
 TextButton_5.Font = Enum.Font.SourceSans
 TextButton_5.Text = "(VISUAL)  Player Esp"
@@ -112,11 +136,13 @@ TextButton_5.TextScaled = true
 TextButton_5.TextSize = 14.000
 TextButton_5.TextWrapped = true
 
+UICorner_6.Parent = TextButton_5
+
 TextButton_6.Parent = Frame
-TextButton_6.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_6.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_6.BorderSizePixel = 0
-TextButton_6.Position = UDim2.new(0.377733588, 0, 0.455384612, 0)
+TextButton_6.Position = UDim2.new(0.369042993, 0, 0.455384612, 0)
 TextButton_6.Size = UDim2.new(0, 123, 0, 43)
 TextButton_6.Font = Enum.Font.SourceSans
 TextButton_6.Text = "(VISUAL)  Rat  Esp"
@@ -125,11 +151,13 @@ TextButton_6.TextScaled = true
 TextButton_6.TextSize = 14.000
 TextButton_6.TextWrapped = true
 
+UICorner_7.Parent = TextButton_6
+
 TextButton_7.Parent = Frame
-TextButton_7.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_7.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_7.BorderSizePixel = 0
-TextButton_7.Position = UDim2.new(0.719681919, 0, 0.455384612, 0)
+TextButton_7.Position = UDim2.new(0.665265739, 0, 0.455384612, 0)
 TextButton_7.Size = UDim2.new(0, 123, 0, 43)
 TextButton_7.Font = Enum.Font.SourceSans
 TextButton_7.Text = "(VISUAL)  Food  Esp [House:Dark:etc]"
@@ -138,24 +166,28 @@ TextButton_7.TextScaled = true
 TextButton_7.TextSize = 14.000
 TextButton_7.TextWrapped = true
 
+UICorner_8.Parent = TextButton_7
+
 TextButton_8.Parent = Frame
-TextButton_8.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_8.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_8.BorderSizePixel = 0
-TextButton_8.Position = UDim2.new(0.0278330017, 0, 0.636923075, 0)
+TextButton_8.Position = UDim2.new(0.05691576, 0, 0.636923075, 0)
 TextButton_8.Size = UDim2.new(0, 123, 0, 43)
 TextButton_8.Font = Enum.Font.SourceSans
-TextButton_8.Text = "(VISUAL)  Rainbow Player"
+TextButton_8.Text = "(VISUAL)  Kick yourself"
 TextButton_8.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_8.TextScaled = true
 TextButton_8.TextSize = 14.000
 TextButton_8.TextWrapped = true
 
+UICorner_9.Parent = TextButton_8
+
 TextButton_9.Parent = Frame
-TextButton_9.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_9.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_9.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_9.BorderSizePixel = 0
-TextButton_9.Position = UDim2.new(0.377733588, 0, 0.636923075, 0)
+TextButton_9.Position = UDim2.new(0.369042993, 0, 0.636923075, 0)
 TextButton_9.Size = UDim2.new(0, 123, 0, 43)
 TextButton_9.Font = Enum.Font.SourceSans
 TextButton_9.Text = "(Player) TP-Tool"
@@ -164,11 +196,13 @@ TextButton_9.TextScaled = true
 TextButton_9.TextSize = 14.000
 TextButton_9.TextWrapped = true
 
+UICorner_10.Parent = TextButton_9
+
 TextButton_10.Parent = Frame
-TextButton_10.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_10.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_10.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_10.BorderSizePixel = 0
-TextButton_10.Position = UDim2.new(0.719681919, 0, 0.636923075, 0)
+TextButton_10.Position = UDim2.new(0.665265739, 0, 0.636923075, 0)
 TextButton_10.Size = UDim2.new(0, 123, 0, 43)
 TextButton_10.Font = Enum.Font.SourceSans
 TextButton_10.Text = "(Player) Teleport to all foods [House:Dark:etc] [REJOIN AFTER USE]"
@@ -177,11 +211,13 @@ TextButton_10.TextScaled = true
 TextButton_10.TextSize = 14.000
 TextButton_10.TextWrapped = true
 
+UICorner_11.Parent = TextButton_10
+
 TextButton_11.Parent = Frame
-TextButton_11.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_11.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_11.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_11.BorderSizePixel = 0
-TextButton_11.Position = UDim2.new(0.0278330017, 0, 0.283076912, 0)
+TextButton_11.Position = UDim2.new(0.05691576, 0, 0.283076912, 0)
 TextButton_11.Size = UDim2.new(0, 123, 0, 43)
 TextButton_11.Font = Enum.Font.SourceSans
 TextButton_11.Text = "(COLLISION) Noclip [Jump to noclip] [P]"
@@ -190,11 +226,13 @@ TextButton_11.TextScaled = true
 TextButton_11.TextSize = 14.000
 TextButton_11.TextWrapped = true
 
+UICorner_12.Parent = TextButton_11
+
 TextButton_12.Parent = Frame
-TextButton_12.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_12.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_12.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_12.BorderSizePixel = 0
-TextButton_12.Position = UDim2.new(0.377733588, 0, 0.283076912, 0)
+TextButton_12.Position = UDim2.new(0.369042993, 0, 0.283076912, 0)
 TextButton_12.Size = UDim2.new(0, 123, 0, 43)
 TextButton_12.Font = Enum.Font.SourceSans
 TextButton_12.Text = "(COLLISION) Anti-IceSkate [P]"
@@ -203,11 +241,13 @@ TextButton_12.TextScaled = true
 TextButton_12.TextSize = 14.000
 TextButton_12.TextWrapped = true
 
+UICorner_13.Parent = TextButton_12
+
 TextButton_13.Parent = Frame
-TextButton_13.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_13.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_13.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_13.BorderSizePixel = 0
-TextButton_13.Position = UDim2.new(0.719681919, 0, 0.283076912, 0)
+TextButton_13.Position = UDim2.new(0.665265739, 0, 0.283076912, 0)
 TextButton_13.Size = UDim2.new(0, 123, 0, 43)
 TextButton_13.Font = Enum.Font.SourceSans
 TextButton_13.Text = "(Fast) Reset"
@@ -216,11 +256,13 @@ TextButton_13.TextScaled = true
 TextButton_13.TextSize = 14.000
 TextButton_13.TextWrapped = true
 
+UICorner_14.Parent = TextButton_13
+
 TextButton_14.Parent = Frame
-TextButton_14.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_14.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_14.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_14.BorderSizePixel = 0
-TextButton_14.Position = UDim2.new(0.0278330017, 0, 0.815384626, 0)
+TextButton_14.Position = UDim2.new(0.05691576, 0, 0.815384626, 0)
 TextButton_14.Size = UDim2.new(0, 123, 0, 43)
 TextButton_14.Font = Enum.Font.SourceSans
 TextButton_14.Text = "(Player) Speed boost [ICE METHOD] [House] [Best with apple] [P]"
@@ -229,11 +271,13 @@ TextButton_14.TextScaled = true
 TextButton_14.TextSize = 14.000
 TextButton_14.TextWrapped = true
 
+UICorner_15.Parent = TextButton_14
+
 TextButton_15.Parent = Frame
-TextButton_15.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_15.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_15.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_15.BorderSizePixel = 0
-TextButton_15.Position = UDim2.new(0.377733588, 0, 0.815384626, 0)
+TextButton_15.Position = UDim2.new(0.369042993, 0, 0.815384626, 0)
 TextButton_15.Size = UDim2.new(0, 123, 0, 43)
 TextButton_15.Font = Enum.Font.SourceSans
 TextButton_15.Text = "(Player) Speed boost [TP-WALK METHOD]"
@@ -242,11 +286,13 @@ TextButton_15.TextScaled = true
 TextButton_15.TextSize = 14.000
 TextButton_15.TextWrapped = true
 
+UICorner_16.Parent = TextButton_15
+
 TextButton_16.Parent = Frame
-TextButton_16.BackgroundColor3 = Color3.fromRGB(255, 184, 61)
+TextButton_16.BackgroundColor3 = Color3.fromRGB(74, 255, 255)
 TextButton_16.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_16.BorderSizePixel = 0
-TextButton_16.Position = UDim2.new(0.719681919, 0, 0.815384626, 0)
+TextButton_16.Position = UDim2.new(0.665265739, 0, 0.815384626, 0)
 TextButton_16.Size = UDim2.new(0, 123, 0, 43)
 TextButton_16.Font = Enum.Font.SourceSans
 TextButton_16.Text = "(Player) Spasm"
@@ -255,29 +301,35 @@ TextButton_16.TextScaled = true
 TextButton_16.TextSize = 14.000
 TextButton_16.TextWrapped = true
 
+UICorner_17.Parent = TextButton_16
+
 TextButton_17.Parent = Frame
-TextButton_17.BackgroundColor3 = Color3.fromRGB(109, 55, 0)
+TextButton_17.BackgroundColor3 = Color3.fromRGB(12, 88, 109)
 TextButton_17.BackgroundTransparency = 0.600
 TextButton_17.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_17.BorderSizePixel = 0
-TextButton_17.Position = UDim2.new(0.860835016, 0, 0, 0)
+TextButton_17.Position = UDim2.new(0.840700686, 0, 0, 0)
 TextButton_17.Size = UDim2.new(0, 27, 0, 24)
 TextButton_17.Font = Enum.Font.SourceSans
 TextButton_17.Text = ">"
 TextButton_17.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_17.TextSize = 14.000
 
+UICorner_18.Parent = TextButton_17
+
+UICorner_19.Parent = Frame
+
 -- Scripts:
 
-local function BKNRCWF_fake_script() -- TextButton.LocalScript 
+local function LOMAMM_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		script.Parent.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(BKNRCWF_fake_script)()
-local function QNOV_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(LOMAMM_fake_script)()
+local function YOYAL_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local on = false
@@ -324,8 +376,8 @@ local function QNOV_fake_script() -- TextButton_2.LocalScript
 	end
 	end)
 end
-coroutine.wrap(QNOV_fake_script)()
-local function BENI_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(YOYAL_fake_script)()
+local function UHOR_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	local on = false
@@ -342,16 +394,16 @@ local function BENI_fake_script() -- TextButton_3.LocalScript
 		end
 	end)
 end
-coroutine.wrap(BENI_fake_script)()
-local function UCLWW_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(UHOR_fake_script)()
+local function HJEULZ_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.RatModel:Destroy()
 	end)
 end
-coroutine.wrap(UCLWW_fake_script)()
-local function UHIGWM_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(HJEULZ_fake_script)()
+local function CPHMVI_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	local on = false
@@ -413,8 +465,8 @@ local function UHIGWM_fake_script() -- TextButton_5.LocalScript
 		end
 	end)
 end
-coroutine.wrap(UHIGWM_fake_script)()
-local function WSYJNY_fake_script() -- TextButton_6.LocalScript 
+coroutine.wrap(CPHMVI_fake_script)()
+local function MOOHKM_fake_script() -- TextButton_6.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_6)
 
 	local on = false
@@ -436,8 +488,8 @@ local function WSYJNY_fake_script() -- TextButton_6.LocalScript
 		end
 	end)
 end
-coroutine.wrap(WSYJNY_fake_script)()
-local function GCADMXR_fake_script() -- TextButton_7.LocalScript 
+coroutine.wrap(MOOHKM_fake_script)()
+local function ZFVIM_fake_script() -- TextButton_7.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_7)
 
 	local on = false
@@ -459,70 +511,24 @@ local function GCADMXR_fake_script() -- TextButton_7.LocalScript
 		end
 	end)
 end
-coroutine.wrap(GCADMXR_fake_script)()
-local function DWLOJO_fake_script() -- TextButton_8.LocalScript 
+coroutine.wrap(ZFVIM_fake_script)()
+local function UKRU_fake_script() -- TextButton_8.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_8)
 
-	local on = false
 	script.Parent.MouseButton1Up:Connect(function()
-		on = not on
-		if on == true then
-			local Players = game:GetService("Players")
-			local RunService = game:GetService("RunService")
-	
-			local player = Players.LocalPlayer
-	
-			local function createHighlight(character)
-				local highlight = Instance.new("Highlight")
-				highlight.Name = "RainbowHighlight"
-				highlight.FillTransparency = 0.4
-				highlight.OutlineTransparency = 1 -- no outline
-				highlight.Adornee = character
-				highlight.Parent = character
-	
-				-- rainbow loop
-				local hue = 0
-	
-				RunService.RenderStepped:Connect(function()
-					if not highlight or not highlight.Parent then return end
-	
-					hue = (hue + 0.01) % 1
-					local color = Color3.fromHSV(hue, 1, 1)
-	
-					highlight.FillColor = color
-				end)
-			end
-	
-			local function setupCharacter(character)
-				-- remove old highlight if respawned
-				local old = character:FindFirstChild("RainbowHighlight")
-				if old then old:Destroy() end
-	
-				createHighlight(character)
-			end
-	
-			if player.Character then
-				setupCharacter(player.Character)
-			end
-	
-			player.CharacterAdded:Connect(setupCharacter)
-		else
-			local player = game.Players.LocalPlayer.Character
-			
-			player:FindFirstChild("RainbowHighlight"):Destroy()
-		end
+		game.Players.LocalPlayer:Kick("You have been kicked by GUI.")
 	end)
 end
-coroutine.wrap(DWLOJO_fake_script)()
-local function RGFBF_fake_script() -- TextButton_9.LocalScript 
+coroutine.wrap(UKRU_fake_script)()
+local function IYHDULG_fake_script() -- TextButton_9.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_9)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/4WRwYLp2"))()
 	end)
 end
-coroutine.wrap(RGFBF_fake_script)()
-local function CTXQRQ_fake_script() -- TextButton_10.LocalScript 
+coroutine.wrap(IYHDULG_fake_script)()
+local function KCJSCF_fake_script() -- TextButton_10.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_10)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -557,8 +563,8 @@ local function CTXQRQ_fake_script() -- TextButton_10.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(CTXQRQ_fake_script)()
-local function WJRZTKV_fake_script() -- TextButton_11.LocalScript 
+coroutine.wrap(KCJSCF_fake_script)()
+local function JQBQT_fake_script() -- TextButton_11.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_11)
 
 	local on = false
@@ -647,24 +653,24 @@ local function WJRZTKV_fake_script() -- TextButton_11.LocalScript
 		end
 	end)
 end
-coroutine.wrap(WJRZTKV_fake_script)()
-local function HUBPGMQ_fake_script() -- TextButton_12.LocalScript 
+coroutine.wrap(JQBQT_fake_script)()
+local function QTBTU_fake_script() -- TextButton_12.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_12)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		workspace.KitchenRoom.SkatingRink:Destroy()
 	end)
 end
-coroutine.wrap(HUBPGMQ_fake_script)()
-local function SUOU_fake_script() -- TextButton_13.LocalScript 
+coroutine.wrap(QTBTU_fake_script)()
+local function CTLLHIT_fake_script() -- TextButton_13.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_13)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end)
 end
-coroutine.wrap(SUOU_fake_script)()
-local function ZGKHLVA_fake_script() -- TextButton_14.LocalScript 
+coroutine.wrap(CTLLHIT_fake_script)()
+local function TTQR_fake_script() -- TextButton_14.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_14)
 
 	local on = false
@@ -720,8 +726,8 @@ local function ZGKHLVA_fake_script() -- TextButton_14.LocalScript
 		end
 	end)
 end
-coroutine.wrap(ZGKHLVA_fake_script)()
-local function RTNT_fake_script() -- TextButton_15.LocalScript 
+coroutine.wrap(TTQR_fake_script)()
+local function THOWM_fake_script() -- TextButton_15.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_15)
 
 	local on = false
@@ -764,8 +770,8 @@ local function RTNT_fake_script() -- TextButton_15.LocalScript
 		end
 	end)
 end
-coroutine.wrap(RTNT_fake_script)()
-local function EFUMMMB_fake_script() -- TextButton_16.LocalScript 
+coroutine.wrap(THOWM_fake_script)()
+local function WLNP_fake_script() -- TextButton_16.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_16)
 
 	local on = false
@@ -825,8 +831,8 @@ local function EFUMMMB_fake_script() -- TextButton_16.LocalScript
 		end
 	end)
 end
-coroutine.wrap(EFUMMMB_fake_script)()
-local function VNDHSCD_fake_script() -- Frame.UIDrag 
+coroutine.wrap(WLNP_fake_script)()
+local function NPZIVKD_fake_script() -- Frame.UIDrag 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Made by Real_IceyDev (@lceyDex) --
@@ -867,4 +873,4 @@ local function VNDHSCD_fake_script() -- Frame.UIDrag
 		end
 	end)
 end
-coroutine.wrap(VNDHSCD_fake_script)()
+coroutine.wrap(NPZIVKD_fake_script)()
