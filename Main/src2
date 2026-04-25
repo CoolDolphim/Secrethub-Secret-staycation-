@@ -152,7 +152,7 @@ UICorner_9.Parent = TextButton_7
 
 -- Scripts:
 
-local function JOUFMYC_fake_script() -- Frame.UIDrag 
+local function OBXVAQY_fake_script() -- Frame.UIDrag 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Made by Real_IceyDev (@lceyDex) --
@@ -193,16 +193,16 @@ local function JOUFMYC_fake_script() -- Frame.UIDrag
 		end
 	end)
 end
-coroutine.wrap(JOUFMYC_fake_script)()
-local function YEHVJO_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(OBXVAQY_fake_script)()
+local function MUIBKOZ_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		script.Parent.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(YEHVJO_fake_script)()
-local function VLCWGZK_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(MUIBKOZ_fake_script)()
+local function YOYPV_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -350,16 +350,16 @@ local function VLCWGZK_fake_script() -- TextButton_2.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(VLCWGZK_fake_script)()
-local function ADTP_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(YOYPV_fake_script)()
+local function LKCELE_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Up:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/seGbe6tn"))()
 	end)
 end
-coroutine.wrap(ADTP_fake_script)()
-local function XJOKYHJ_fake_script() -- TextButton_5.LocalScript 
+coroutine.wrap(LKCELE_fake_script)()
+local function QGCTG_fake_script() -- TextButton_5.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_5)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -372,8 +372,8 @@ local function XJOKYHJ_fake_script() -- TextButton_5.LocalScript
 		end
 	end)
 end
-coroutine.wrap(XJOKYHJ_fake_script)()
-local function MECMONI_fake_script() -- TextButton_6.LocalScript 
+coroutine.wrap(QGCTG_fake_script)()
+local function WBBN_fake_script() -- TextButton_6.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_6)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -384,6 +384,20 @@ local function MECMONI_fake_script() -- TextButton_6.LocalScript
 		local char = player.Character or player.CharacterAdded:Wait()
 	
 		local root = char:WaitForChild("HumanoidRootPart")
+	
+		local RunService = game:GetService("RunService")
+	
+	
+		local humanoid = char:WaitForChild("Humanoid")
+	
+	
+		local STEP_DISTANCE = 0.85
+	
+		RunService.RenderStepped:Connect(function()
+			if humanoid.MoveDirection.Magnitude > 0 then
+				root.CFrame = root.CFrame + (humanoid.MoveDirection * STEP_DISTANCE)
+			end
+		end)
 	
 		local attach = ReplicatedStorage:WaitForChild("CharacterSkins"):WaitForChild("Dark"):WaitForChild("Defaults"):WaitForChild("Single Grain Of Rice"):Clone()
 		attach.Parent = workspace
@@ -397,20 +411,21 @@ local function MECMONI_fake_script() -- TextButton_6.LocalScript
 	
 		game.Players.LocalPlayer.Character.Torso.Transparency = 1
 	
-		attach.Size = Vector3.new(10, 10, 10)
+		attach.Size = Vector3.new(4.542261600494385, 3.319939374923706, 3.463883399963379)
 	
 		-- stable loop
 		while char.Parent do
 			root = char:FindFirstChild("HumanoidRootPart") or root
 			if root then
 				attach.CFrame = root.CFrame
+	
 			end
 			task.wait()
 		end
 	end)
 end
-coroutine.wrap(MECMONI_fake_script)()
-local function LRZD_fake_script() -- TextButton_7.LocalScript 
+coroutine.wrap(WBBN_fake_script)()
+local function BNGSLW_fake_script() -- TextButton_7.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_7)
 
 	script.Parent.MouseButton1Up:Connect(function()
@@ -441,4 +456,4 @@ local function LRZD_fake_script() -- TextButton_7.LocalScript
 		player.CharacterAdded:Connect(setupCharacter)
 	end)
 end
-coroutine.wrap(LRZD_fake_script)()
+coroutine.wrap(BNGSLW_fake_script)()
