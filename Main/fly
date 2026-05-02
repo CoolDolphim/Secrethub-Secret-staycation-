@@ -7,7 +7,7 @@ local character = player.Character or player.CharacterAdded:Wait()
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 local camera = workspace.CurrentCamera
 
-local flying = false
+local flying = true
 local speed = 150
 
 local moveDirection = Vector3.zero
