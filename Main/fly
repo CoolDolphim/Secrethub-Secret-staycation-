@@ -3,106 +3,125 @@ local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 
 local player = Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local root = character:WaitForChild("HumanoidRootPart")
-local camera = workspace.CurrentCamera
 
-local flying = true
-local speed = 120
+local function setup(char)
+	local root = char:WaitForChild("HumanoidRootPart")
+	local humanoid = char:WaitForChild("Humanoid")
+	local camera = workspace.CurrentCamera
 
-local moveDir = Vector3.zero
+	local flying = true
+	local speed = 80
 
--- FIXED directions
-local keyMap = {
-	[Enum.KeyCode.W] = Vector3.new(0,0,1),
-	[Enum.KeyCode.S] = Vector3.new(0,0,-1),
-	[Enum.KeyCode.A] = Vector3.new(-1,0,0),
-	[Enum.KeyCode.D] = Vector3.new(1,0,0),
-	[Enum.KeyCode.Space] = Vector3.new(0,10,0),
-	[Enum.KeyCode.LeftControl] = Vector3.new(0,-1,0),
-}
+	local moveDir = Vector3.zero
 
-UIS.InputBegan:Connect(function(input, processed)
-	if processed then return end
-	
-	if input.KeyCode == Enum.KeyCode.F then
-		flying = not flying
+	local function setFlying(state)
+		flying = state
+		humanoid.PlatformStand = state
+		humanoid.AutoRotate = not state
+		
+		if state then
+			root.AssemblyLinearVelocity = Vector3.zero
+			root.AssemblyAngularVelocity = Vector3.zero
+		end
 	end
-	
-	if keyMap[input.KeyCode] then
-		moveDir += keyMap[input.KeyCode]
-	end
-end)
 
-UIS.InputEnded:Connect(function(input)
-	if keyMap[input.KeyCode] then
-		moveDir -= keyMap[input.KeyCode]
-	end
-end)
+	-- Controls
+	local keyMap = {
+		[Enum.KeyCode.W] = Vector3.new(0,0,-1),
+		[Enum.KeyCode.S] = Vector3.new(0,0,1),
+		[Enum.KeyCode.A] = Vector3.new(-1,0,0),
+		[Enum.KeyCode.D] = Vector3.new(1,0,0),
+		[Enum.KeyCode.Space] = Vector3.new(0,1,0),
+		[Enum.KeyCode.LeftControl] = Vector3.new(0,-1,0),
+	}
 
--- 📱 MOBILE UI
-if UIS.TouchEnabled then
-	local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
-	gui.Name = "FlyUI"
-
-	-- Toggle button
-	local toggle = Instance.new("TextButton", gui)
-	toggle.Size = UDim2.new(0,120,0,50)
-	toggle.Position = UDim2.new(0,20,1,-70)
-	toggle.Text = "FLY"
-	toggle.BackgroundColor3 = Color3.fromRGB(40,40,40)
-	toggle.TextColor3 = Color3.new(1,1,1)
-
-	toggle.MouseButton1Click:Connect(function()
-		flying = not flying
+	UIS.InputBegan:Connect(function(input, gpe)
+		if gpe then return end
+		
+		if input.KeyCode == Enum.KeyCode.F then
+			setFlying(not flying)
+		end
+		
+		if keyMap[input.KeyCode] then
+			moveDir += keyMap[input.KeyCode]
+		end
 	end)
 
-	-- Up button
-	local up = Instance.new("TextButton", gui)
-	up.Size = UDim2.new(0,60,0,60)
-	up.Position = UDim2.new(1,-80,1,-140)
-	up.Text = "↑"
+	UIS.InputEnded:Connect(function(input)
+		if keyMap[input.KeyCode] then
+			moveDir -= keyMap[input.KeyCode]
+		end
+	end)
 
-	-- Down button
-	local down = Instance.new("TextButton", gui)
-	down.Size = UDim2.new(0,60,0,60)
-	down.Position = UDim2.new(1,-80,1,-70)
-	down.Text = "↓"
-
+	--  MOBILE
 	local upHeld = false
 	local downHeld = false
 
-	up.MouseButton1Down:Connect(function() upHeld = true end)
-	up.MouseButton1Up:Connect(function() upHeld = false end)
+	if UIS.TouchEnabled then
+		local gui = Instance.new("ScreenGui")
+		gui.Name = "FlyUI"
+		gui.Parent = player:WaitForChild("PlayerGui")
 
-	down.MouseButton1Down:Connect(function() downHeld = true end)
-	down.MouseButton1Up:Connect(function() downHeld = false end)
+		local toggle = Instance.new("TextButton")
+		toggle.Size = UDim2.new(0,120,0,50)
+		toggle.Position = UDim2.new(0,20,1,-70)
+		toggle.Text = "FLY"
+		toggle.Parent = gui
 
-	RunService.RenderStepped:Connect(function()
-		if upHeld then
-			moveDir += Vector3.new(0,1,0)
+		toggle.MouseButton1Click:Connect(function()
+			setFlying(not flying)
+		end)
+
+		local up = Instance.new("TextButton")
+		up.Size = UDim2.new(0,60,0,60)
+		up.Position = UDim2.new(1,-80,1,-140)
+		up.Text = "↑"
+		up.Parent = gui
+
+		local down = Instance.new("TextButton")
+		down.Size = UDim2.new(0,60,0,60)
+		down.Position = UDim2.new(1,-80,1,-70)
+		down.Text = "↓"
+		down.Parent = gui
+
+		up.MouseButton1Down:Connect(function() upHeld = true end)
+		up.MouseButton1Up:Connect(function() upHeld = false end)
+
+		down.MouseButton1Down:Connect(function() downHeld = true end)
+		down.MouseButton1Up:Connect(function() downHeld = false end)
+	end
+
+	
+	RunService.RenderStepped:Connect(function(dt)
+		if not flying then return end
+
+		root.AssemblyLinearVelocity = Vector3.zero
+		root.AssemblyAngularVelocity = Vector3.zero
+
+		local camCF = camera.CFrame
+		local inputDir = moveDir
+
+		if upHeld then inputDir += Vector3.new(0,1,0) end
+		if downHeld then inputDir += Vector3.new(0,-1,0) end
+
+		
+		local moveVector =
+			(-camCF.LookVector * inputDir.Z) + -- THIS LINE FIXES IT
+			(camCF.RightVector * inputDir.X) +
+			(Vector3.new(0,1,0) * inputDir.Y)
+
+		if moveVector.Magnitude > 0 then
+			moveVector = moveVector.Unit
 		end
-		if downHeld then
-			moveDir += Vector3.new(0,-1,0)
-		end
+
+		local newPos = root.Position + moveVector * speed * dt
+
+		root.CFrame = CFrame.new(newPos, newPos + camCF.LookVector)
 	end)
 end
 
--- 🚀 FLIGHT LOOP
-RunService.RenderStepped:Connect(function(dt)
-	if not flying or not root then return end
-	
-	local camCF = camera.CFrame
-	
-	local direction =
-		(camCF.LookVector * moveDir.Z) +
-		(camCF.RightVector * moveDir.X) +
-		(Vector3.new(0,1,0) * moveDir.Y)
-
-	if direction.Magnitude > 0 then
-		direction = direction.Unit
-		
-		local newPos = root.Position + direction * speed * dt
-		root.CFrame = CFrame.new(newPos, newPos + camCF.LookVector)
-	end
-end)
+-- respawn safe
+if player.Character then
+	setup(player.Character)
+end
+player.CharacterAdded:Connect(setup)
