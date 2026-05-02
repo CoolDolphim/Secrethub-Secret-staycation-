@@ -29,10 +29,10 @@ UIS.InputBegan:Connect(function(input, processed)
 end)
 
 UIS.InputEnded:Connect(function(input)
-	if input.KeyCode == Enum.KeyCode.W then moveDirection -= Vector3.new(0,0,-1) end
-	if input.KeyCode == Enum.KeyCode.S then moveDirection -= Vector3.new(0,0,1) end
-	if input.KeyCode == Enum.KeyCode.A then moveDirection -= Vector3.new(-1,0,0) end
-	if input.KeyCode == Enum.KeyCode.D then moveDirection -= Vector3.new(1,0,0) end
+	if input.KeyCode == Enum.KeyCode.W then moveDirection -= Vector3.new(0,0,1) end
+	if input.KeyCode == Enum.KeyCode.S then moveDirection -= Vector3.new(0,0,-1) end
+	if input.KeyCode == Enum.KeyCode.A then moveDirection -= Vector3.new(1,0,0) end
+	if input.KeyCode == Enum.KeyCode.D then moveDirection -= Vector3.new(-1,0,0) end
 	if input.KeyCode == Enum.KeyCode.Space then moveDirection -= Vector3.new(0,1,0) end
 	if input.KeyCode == Enum.KeyCode.LeftControl then moveDirection -= Vector3.new(0,-1,0) end
 end)
