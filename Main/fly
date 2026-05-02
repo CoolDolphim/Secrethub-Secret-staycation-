@@ -1,0 +1,59 @@
+local UIS = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local camera = workspace.CurrentCamera
+
+local flying = false
+local speed = 50
+
+local moveDirection = Vector3.zero
+
+-- Track movement keys
+UIS.InputBegan:Connect(function(input, processed)
+	if processed then return end
+	
+	if input.KeyCode == Enum.KeyCode.F then
+		flying = not flying
+	end
+	
+	if input.KeyCode == Enum.KeyCode.W then moveDirection += Vector3.new(0,0,-1) end
+	if input.KeyCode == Enum.KeyCode.S then moveDirection += Vector3.new(0,0,1) end
+	if input.KeyCode == Enum.KeyCode.A then moveDirection += Vector3.new(-1,0,0) end
+	if input.KeyCode == Enum.KeyCode.D then moveDirection += Vector3.new(1,0,0) end
+	if input.KeyCode == Enum.KeyCode.Space then moveDirection += Vector3.new(0,1,0) end
+	if input.KeyCode == Enum.KeyCode.LeftControl then moveDirection += Vector3.new(0,-1,0) end
+end)
+
+UIS.InputEnded:Connect(function(input)
+	if input.KeyCode == Enum.KeyCode.W then moveDirection -= Vector3.new(0,0,-1) end
+	if input.KeyCode == Enum.KeyCode.S then moveDirection -= Vector3.new(0,0,1) end
+	if input.KeyCode == Enum.KeyCode.A then moveDirection -= Vector3.new(-1,0,0) end
+	if input.KeyCode == Enum.KeyCode.D then moveDirection -= Vector3.new(1,0,0) end
+	if input.KeyCode == Enum.KeyCode.Space then moveDirection -= Vector3.new(0,1,0) end
+	if input.KeyCode == Enum.KeyCode.LeftControl then moveDirection -= Vector3.new(0,-1,0) end
+end)
+
+RunService.RenderStepped:Connect(function(delta)
+	if flying and humanoidRootPart then
+		local camCF = camera.CFrame
+		
+		local direction = Vector3.zero
+		
+		if moveDirection.Magnitude > 0 then
+			direction =
+				(camCF.LookVector * moveDirection.Z) +
+				(camCF.RightVector * moveDirection.X) +
+				(Vector3.new(0,1,0) * moveDirection.Y)
+		end
+		
+		if direction.Magnitude > 0 then
+			direction = direction.Unit
+			local newPos = humanoidRootPart.Position + direction * speed * delta
+			humanoidRootPart.CFrame = CFrame.new(newPos, newPos + camCF.LookVector)
+		end
+	end
+end)
