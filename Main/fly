@@ -4,15 +4,24 @@ local Players = game:GetService("Players")
 
 local player = Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
-local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local root = character:WaitForChild("HumanoidRootPart")
 local camera = workspace.CurrentCamera
 
 local flying = true
-local speed = 150
+local speed = 78
 
-local moveDirection = Vector3.zero
+local moveDir = Vector3.zero
 
--- Track movement keys
+-- FIXED directions
+local keyMap = {
+	[Enum.KeyCode.W] = Vector3.new(0,0,1),
+	[Enum.KeyCode.S] = Vector3.new(0,0,-1),
+	[Enum.KeyCode.A] = Vector3.new(-1,0,0),
+	[Enum.KeyCode.D] = Vector3.new(1,0,0),
+	[Enum.KeyCode.Space] = Vector3.new(0,1,0),
+	[Enum.KeyCode.LeftControl] = Vector3.new(0,-1,0),
+}
+
 UIS.InputBegan:Connect(function(input, processed)
 	if processed then return end
 	
@@ -20,40 +29,80 @@ UIS.InputBegan:Connect(function(input, processed)
 		flying = not flying
 	end
 	
-	if input.KeyCode == Enum.KeyCode.W then moveDirection += Vector3.new(0,0,-1) end
-	if input.KeyCode == Enum.KeyCode.S then moveDirection += Vector3.new(0,0,1) end
-	if input.KeyCode == Enum.KeyCode.A then moveDirection += Vector3.new(-1,0,0) end
-	if input.KeyCode == Enum.KeyCode.D then moveDirection += Vector3.new(1,0,0) end
-	if input.KeyCode == Enum.KeyCode.Space then moveDirection += Vector3.new(0,3.5,0) end
-	if input.KeyCode == Enum.KeyCode.LeftControl then moveDirection += Vector3.new(0,-1,0) end
+	if keyMap[input.KeyCode] then
+		moveDir += keyMap[input.KeyCode]
+	end
 end)
 
 UIS.InputEnded:Connect(function(input)
-	if input.KeyCode == Enum.KeyCode.W then moveDirection -= Vector3.new(0,0,-1) end
-	if input.KeyCode == Enum.KeyCode.S then moveDirection -= Vector3.new(0,0,1) end
-	if input.KeyCode == Enum.KeyCode.A then moveDirection -= Vector3.new(-1,0,0) end
-	if input.KeyCode == Enum.KeyCode.D then moveDirection -= Vector3.new(1,0,0) end
-	if input.KeyCode == Enum.KeyCode.Space then moveDirection -= Vector3.new(0,1,0) end
-	if input.KeyCode == Enum.KeyCode.LeftControl then moveDirection -= Vector3.new(0,-1,0) end
+	if keyMap[input.KeyCode] then
+		moveDir -= keyMap[input.KeyCode]
+	end
 end)
 
-RunService.RenderStepped:Connect(function(delta)
-	if flying and humanoidRootPart then
-		local camCF = camera.CFrame
-		
-		local direction = Vector3.zero
-		
-		if moveDirection.Magnitude > 0 then
-			direction =
-				(camCF.LookVector * moveDirection.Z) +
-				(camCF.RightVector * moveDirection.X) +
-				(Vector3.new(0,1,0) * moveDirection.Y)
+-- 📱 MOBILE UI
+if UIS.TouchEnabled then
+	local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+	gui.Name = "FlyUI"
+
+	-- Toggle button
+	local toggle = Instance.new("TextButton", gui)
+	toggle.Size = UDim2.new(0,120,0,50)
+	toggle.Position = UDim2.new(0,20,1,-70)
+	toggle.Text = "FLY"
+	toggle.BackgroundColor3 = Color3.fromRGB(40,40,40)
+	toggle.TextColor3 = Color3.new(1,1,1)
+
+	toggle.MouseButton1Click:Connect(function()
+		flying = not flying
+	end)
+
+	-- Up button
+	local up = Instance.new("TextButton", gui)
+	up.Size = UDim2.new(0,60,0,60)
+	up.Position = UDim2.new(1,-80,1,-140)
+	up.Text = "↑"
+
+	-- Down button
+	local down = Instance.new("TextButton", gui)
+	down.Size = UDim2.new(0,60,0,60)
+	down.Position = UDim2.new(1,-80,1,-70)
+	down.Text = "↓"
+
+	local upHeld = false
+	local downHeld = false
+
+	up.MouseButton1Down:Connect(function() upHeld = true end)
+	up.MouseButton1Up:Connect(function() upHeld = false end)
+
+	down.MouseButton1Down:Connect(function() downHeld = true end)
+	down.MouseButton1Up:Connect(function() downHeld = false end)
+
+	RunService.RenderStepped:Connect(function()
+		if upHeld then
+			moveDir += Vector3.new(0,1,0)
 		end
-		
-		if direction.Magnitude > 0 then
-			direction = direction.Unit
-			local newPos = humanoidRootPart.Position + direction * speed * delta
-			humanoidRootPart.CFrame = CFrame.new(newPos, newPos + camCF.LookVector)
+		if downHeld then
+			moveDir += Vector3.new(0,-1,0)
 		end
+	end)
+end
+
+-- 🚀 FLIGHT LOOP
+RunService.RenderStepped:Connect(function(dt)
+	if not flying or not root then return end
+	
+	local camCF = camera.CFrame
+	
+	local direction =
+		(camCF.LookVector * moveDir.Z) +
+		(camCF.RightVector * moveDir.X) +
+		(Vector3.new(0,1,0) * moveDir.Y)
+
+	if direction.Magnitude > 0 then
+		direction = direction.Unit
+		
+		local newPos = root.Position + direction * speed * dt
+		root.CFrame = CFrame.new(newPos, newPos + camCF.LookVector)
 	end
 end)
