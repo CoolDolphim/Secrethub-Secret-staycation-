@@ -412,7 +412,7 @@ local function ROODEZ_fake_script() -- TextButton_6.LocalScript
 	
 		game.Players.LocalPlayer.Character.Torso.Transparency = 1
 	
-		attach.Size = Vector3.new(4.542261600494385, 3.319939374923706, 3.463883399963379)
+		attach.Size = Vector3.new(10, 9, 10)
 	
 		-- stable loop
 		while char.Parent do
